@@ -196,6 +196,11 @@ int main () {
                     push(myStack, "You use viewed report Operation");
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
+            case 12:
+                system("cls");
+                SET_CONSOLE_COLOR(GREEN);
+                readDataRetired();
+                break;
             case 0:
                 push(myStack, "You have been exit from our system");
                 break;
@@ -219,29 +224,30 @@ void menu(){
     cout<<  "\t*                                     *"<<endl;
     cout<<"\n\t***************************************"<<endl;
 
-    cout<<"\n\t1. Create a new user"<<endl;
-    cout<<"\n\t2. View all employees information"<<endl;
-    cout<<"\n\t3. Search employees by ID"<<endl;
+    cout<<"\n\t1. Create a new user"<<endl; //done
+    cout<<"\n\t2. View all employees information"<<endl; //done
+    cout<<"\n\t3. Search employees by ID"<<endl; //done
     SET_CONSOLE_COLOR(YELLOW);
     cout<<"\n\t****************Filter**********************"<<endl;
-    cout<<"\n\t4. Filter employees by categories (Salary, Job, Name)"<<endl;
+    cout<<"\n\t4. Filter employees by categories (Salary, Job, Name)"<<endl; //done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Find**********************"<<endl;
-    cout<<"\n\t5. Find a employees who has top 1 salary"<<endl;
-    cout<<"\n\t6. Find a employees who has top 3 salary"<<endl;
-    cout<<"\n\t7. Find min max and average salary"<<endl;
+    cout<<"\n\t5. Find a employees who has top 1 salary"<<endl; 
+    cout<<"\n\t6. Find a employees who has top 3 salary"<<endl; 
+    cout<<"\n\t7. Find min max and average salary"<<endl; 
     SET_CONSOLE_COLOR(RED);
     cout<<"\n\t****************Delete**********************"<<endl;
-    cout<<"\n\t8. Delete Data"<<endl;
+    cout<<"\n\t8. Delete Data"<<endl; //done
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t****************Update**********************"<<endl;
-    cout<<"\n\t9. Update users data"<<endl;
+    cout<<"\n\t9. Update users data"<<endl; //done
     cout<<"\n\t**************Other Feature**********************"<<endl;
-    cout<<"\n\t10. History of operation"<<endl;
-    cout<<"\n\t11. Generate employee new report informations"<<endl;
+    cout<<"\n\t10. History of operation"<<endl; //done
+    cout<<"\n\t11. Generate employee new report informations"<<endl; //done
+    cout<<"\n\t12. Show upcomming retired employees"<<endl; 
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
-    cout<<"\n\t0. Exit the console application"<<endl;
+    cout<<"\n\t0. Exit the console application"<<endl; //done
 }
 
 void authScreen() {

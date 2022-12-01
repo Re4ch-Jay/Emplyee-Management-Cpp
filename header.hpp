@@ -39,7 +39,7 @@ List * createEmptyList(){
 
 void readFile() {
     fstream file;
-    file.open("data.txt");
+    file.open("reportData.txt");
     string myline;
     while (!file.eof())
     {
@@ -50,7 +50,7 @@ void readFile() {
             }
         }
         else {
-            file.open("data.txt", ios::out);
+            file.open("reportData.txt", ios::out);
             cout << "Couldn't open file\n";
             break;
         }

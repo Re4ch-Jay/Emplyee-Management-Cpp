@@ -42,7 +42,25 @@ void addEmployee() {
     ID++;
 
     insertToReportFileAndSave(ls, ID, Employee.name, Employee.job, Employee.salary, Employee.gender, Employee.attendance, Employee.dayOff, Employee.workHours);
+    if(Employee.age >= 50) {
+        ofstream write;
+        write.open("retired.txt", ios::app);
+        write << "\n" << ID;
+        write << "\n" << Employee.name ;
+        write << "\n" << Employee.age ;
+        write << "\n" << Employee.job ;
+        write << "\n" << Employee.gender;
+        write << "\n" << Employee.attendance ;
+        write << "\n" << Employee.dayOff ;
+        write << "\n" << Employee.workHours ;
+        write << "\n" << Employee.salary;
 
+        write.close();
+        write.open("id.txt");
+        write << ID;
+        write.close();
+        cout << "\n\tData save to file";
+    }
     ofstream write;
     write.open("Employee.txt", ios::app);
     write << "\n" << ID;
@@ -60,6 +78,7 @@ void addEmployee() {
     write << ID;
     write.close();
     cout << "\n\tData save to file";
+    
 }
 
 void print(Employee s) {
@@ -94,6 +113,27 @@ void readData() {
     }
     read.close();
 }
+
+void readDataRetired() {
+    Employee Employee;
+    ifstream read;
+    read.open("retired.txt");
+    while (!read.eof()) {
+        read >> Employee.id;
+        read.ignore();
+        getline(read, Employee.name);
+        read >> Employee.age;
+        read >> Employee.job;
+        read >> Employee.gender;
+        read >> Employee.attendance;
+        read >> Employee.dayOff;
+        read >> Employee.workHours;
+        read >> Employee.salary;     
+        print(Employee);
+    }
+    read.close();
+}
+
 
 int searchDataById() {
     int id;
@@ -204,6 +244,40 @@ void deleteData() {
     cin >> choice;
     if (choice == 'y') {
         Employee Employee;
+        ofstream tempFile2;
+        tempFile2.open("temp2.txt");
+        ifstream read2;
+        
+        read2.open("retired.txt");
+        while (!read2.eof()) {
+            read2 >> Employee.id;
+            read2.ignore();
+            getline(read2, Employee.name);
+            read2 >> Employee.age;
+            read2 >> Employee.job;
+            read2 >> Employee.gender;
+            read2 >> Employee.attendance;
+            read2 >> Employee.dayOff;
+            read2 >> Employee.workHours;
+            read2 >> Employee.salary;
+            if (Employee.id != id) {
+                tempFile2 << "\n" << Employee.id;
+                tempFile2 << "\n" << Employee.name;
+                tempFile2 << "\n" << Employee.age;
+                tempFile2 << "\n" << Employee.job;
+                tempFile2 << "\n" << Employee.gender;
+                tempFile2 << "\n" << Employee.attendance;
+                tempFile2 << "\n" << Employee.dayOff;
+                tempFile2 << "\n" << Employee.workHours;
+                tempFile2 << "\n" << Employee.salary;
+            }
+        }
+        read2.close();
+        tempFile2.close();
+        remove("retired.txt");
+        rename("temp2.txt", "retired.txt");
+        cout << "\n\tData deleted successfuly";
+
         ofstream tempFile;
         tempFile.open("temp.txt");
         ifstream read;
@@ -236,11 +310,14 @@ void deleteData() {
         remove("Employee.txt");
         rename("temp.txt", "Employee.txt");
         cout << "\n\tData deleted successfuly";
+       
     }
     else {
         cout << "\n\tRecord not deleted";
     }
+    ID--; // not test
 }
+
 
 void updateData() {
     int id = searchDataById();
@@ -268,6 +345,53 @@ void updateData() {
         cin >> newData.salary;
         
         Employee Employee;
+        ofstream tempFile2;
+        tempFile2.open("temp2.txt");
+        ifstream read2;
+        read2.open("retired.txt");
+        while (!read2.eof()) {
+            read2 >> Employee.id;
+            read2.ignore();
+            getline(read2, Employee.name);
+            read2 >> Employee.age;
+            read2 >> Employee.job;
+            read2 >> Employee.gender;
+            read2 >> Employee.attendance;
+            read2 >> Employee.dayOff;
+            read2 >> Employee.workHours;
+            read2 >> Employee.salary;
+            if (Employee.id != id) {
+                tempFile2 << "\n" << Employee.id;
+                tempFile2 << "\n" << Employee.name;
+                tempFile2 << "\n" << Employee.age;
+                tempFile2 << "\n" << Employee.job;
+                tempFile2 << "\n" << Employee.gender;
+                tempFile2 << "\n" << Employee.attendance;
+                tempFile2 << "\n" << Employee.dayOff;
+                tempFile2 << "\n" << Employee.workHours;
+                tempFile2 << "\n" << Employee.salary;
+            }
+            else {
+                tempFile2 << "\n"<< Employee.id;
+                tempFile2 << "\n"<< newData.name;
+                tempFile2 << "\n"<< newData.age;
+                tempFile2 << "\n"<< newData.job;
+                tempFile2 << "\n"<< newData.gender;
+                tempFile2 << "\n"<< newData.attendance;
+                tempFile2 << "\n"<< newData.dayOff;
+                tempFile2 << "\n"<< newData.workHours;
+                tempFile2 << "\n"<< newData.salary;
+            }
+        }
+        read2.close();
+        tempFile2.close();
+        remove("retired.txt");
+        rename("temp2.txt", "retired.txt");
+        cout << "\n\tData updated successfuly";
+
+
+        // update retired
+
         ofstream tempFile;
         tempFile.open("temp.txt");
         ifstream read;
@@ -300,7 +424,7 @@ void updateData() {
                 tempFile << "\n"<< newData.age;
                 tempFile << "\n"<< newData.job;
                 tempFile << "\n"<< newData.gender;
-                tempFile << "\n"<< Employee.attendance;
+                tempFile << "\n"<< newData.attendance;
                 tempFile << "\n"<< newData.dayOff;
                 tempFile << "\n"<< newData.workHours;
                 tempFile << "\n"<< newData.salary;
@@ -316,46 +440,3 @@ void updateData() {
         cout << "\n\tRecord not deleted";
     }
 }
-
-// int main()
-// {
-//     ifstream read;
-//     read.open("id.txt");
-//     if (!read.fail()) {
-//         read >> ID;
-//     }
-//     else {
-//         ID = 0;
-//     }
-//     read.close();
-
-//     while (true) {
-//         cout << "\n\t1.Add Employee data";
-//         cout << "\n\t2.See Employee data";
-//         cout << "\n\t3.Search Employee data";
-//         cout << "\n\t4.Delete Employee data";
-//         cout << "\n\t5.Update Employee data";
-
-//         int choice;
-//         cout << "\n\tEnter choice : ";
-//         cin >> choice;
-//         switch (choice) {
-//         case 1:
-//             addEmployee();
-//             break;
-//         case 2:
-//             readData();
-//             break;
-//         case 3:
-//             searchData();
-//             break;
-//         case 4:
-//             deleteData();
-//             break;
-//         case 5:
-//             updateData();
-//             break;
-//         }
-//     }
-
-// }
