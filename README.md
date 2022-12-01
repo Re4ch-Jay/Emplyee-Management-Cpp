@@ -1,4 +1,4 @@
-# Salary Management System in C++ by using Linked List and FileIO
+# Employee Management System in C++ by using Linked List and FileIO
 
 ##### Purpose of this project: 
 
