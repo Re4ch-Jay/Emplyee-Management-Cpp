@@ -29,13 +29,11 @@ int main () {
     }
     read.close();
 
-    List * myList;
-    myList = createEmptyList();
     Stack * myStack;
     myStack = createEmptyStack();
     string name, ID, job, newID, gender, attendance, dayOff;
     double salary, average, max1, max2, max3, min, workHours;
-    int choice;
+    int choice, ch4;
     ifstream file;
     string line;
     string searchID;
@@ -79,96 +77,82 @@ int main () {
                 push(myStack, "You use Search Operation");
                 cout<<"\n\t******************************"<<endl;
                 break;
-            case 4:
+             case 4:
                 system("cls");
                 SET_CONSOLE_COLOR(YELLOW);
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 cout<<"\n\tSearch each user by categories"<<endl;
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
-    	
-                int ch4;
-                do
-                {
-                    cout<<"\n\t1. Filter user by salary"<<endl;
-                    cout<<"\n\t2. Filter user by job"<<endl;
-                    cout<<"\n\t3. Filter user by name"<<endl;
-                    cout<<"\n\t0. Back"<<endl; cout<<"Choice: "; cin>>ch4;
-                    if (ch4 == 0)
-                    {
-                        break;
-                    }else if(ch4 == 1){
-                        system("cls");                  
-                        SET_CONSOLE_COLOR(YELLOW);
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;  
-                        searchDataBySalary();
-                        push(myStack, "You use filter by salary Operation");
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;
-                    }else if(ch4 == 2) {
-                        system("cls");
-                        SET_CONSOLE_COLOR(YELLOW);
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;
-                        searchDataByJob();
-                        push(myStack, "You use filter by job Operation");
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;
-                    }else if(ch4 == 3) {
-                        system("cls");
-                        SET_CONSOLE_COLOR(YELLOW);
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;
-                        searchDataByName();
-                        push(myStack, "You use filter by name Operation");
-                        cout<<"\n\t********************************************************************************************************************************"<<endl;
-                    }
-                } while (ch4 != 0);
+                cout<<"\n\t1. Filter user by salary"<<endl;
+                cout<<"\n\t2. Filter user by age"<<endl;
+                cout<<"\n\t3. Filter user by gender"<<endl;
+                cout<<"\n\t0. Back"<<endl; cout<<"Choice: "; cin>>ch4;
+                if(ch4 == 1){
+                    system("cls");                  
+                    SET_CONSOLE_COLOR(YELLOW);
+                    push(myStack, "You use filter by salary Operation");
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;  
+                    searchDataBySalary();
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                }else if(ch4 == 2) {
+                    system("cls");
+                    SET_CONSOLE_COLOR(YELLOW);
+                    push(myStack, "You use filter by age Operation");
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    searchDataByAge();
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                }else if(ch4 == 3) {
+                    system("cls");
+                    push(myStack, "You use filter by gender Operation");
+                    SET_CONSOLE_COLOR(YELLOW);
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    searchDataByGender();
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                }else{
+                    cout<<"\n\tInvalid input"<<endl;
+                }
+            
                 break;
             case 5:
                 system("cls");
-                if(myList->head != NULL){
-                    max1 = findMax1(myList);
-                    SET_CONSOLE_COLOR(YELLOW);
-                    cout<<"\n\t*************************************"<<endl;
-                    cout<<"\n\tTop 1 salary is: "<<endl;
-                    displayMax(myList, max1);
-                    cout<<"\n\t*************************************"<<endl;
+                SET_CONSOLE_COLOR(GREEN);
+                char ch5;
+                cout<<"\n\t*************************************************"<<endl;
+                cout<<"\n\tView employeee by Department"<<endl;
+                cout<<"\n\t*************************************************"<<endl;
+                cout<<"\n\t1. Software Developement"<<endl;
+                cout<<"\n\t2. Accounting"<<endl;
+                cout<<"\n\t3. Teaching"<<endl; 
+                cout<<"\n\tChoice: "; cin>>ch5;
+                if(ch5 == '1'){
+                    system("cls");
+                    SET_CONSOLE_COLOR(GREEN);
+                    cout<<"\n\t*************************************************"<<endl;
+                    cout<<"\n\tSoftware Development Department Data"<<endl;
+                    readDataDeveloper();
+                    cout<<"\n\t*************************************************"<<endl;
+                    push(myStack, "You used view Development department");
+                }else if(ch5 == '2') {
+                    system("cls");
+                    SET_CONSOLE_COLOR(GREEN);
+                    cout<<"\n\t*************************************************"<<endl;
+                    cout<<"\n\tAccounting Department Data"<<endl;
+                    readDataAccounting();
+                    cout<<"\n\t*************************************************"<<endl;
+                    
+                    push(myStack, "You used view Accounting department");
+                }else if(ch5 == '3'){
+                    system("cls");
+                    SET_CONSOLE_COLOR(GREEN);
+                    cout<<"\n\t*************************************************"<<endl;
+                    cout<<"\n\tTeaching Department Data"<<endl;
+                    readDataTeacher();
+                    cout<<"\n\t*************************************************"<<endl;
+                    push(myStack, "You used view Teaching department");
                 }
                 
                 break;
             case 6:
-                system("cls");
-                SET_CONSOLE_COLOR(GREEN);
-                if(myList->head != NULL) {
-                    max1 = findMax1(myList);
-                    max2 = findMax2(myList);
-                    max3 = findMax3(myList);
-                    if(counter == 3) {
-                        displayMax(myList, max1);
-                        
-                    }else if(counter == 2){
-                        displayMax(myList, max2);
-                    }else if(counter == 1) {
-                        displayMax(myList, max3);
-                    }
-
-                }
-                //loading();
-                break;
-            case 7:
-                system("cls");
-                SET_CONSOLE_COLOR(GREEN);
-                if(myList->head != NULL) {
-                    average = findAverageSalary(myList);
-                    max1 = findMax1(myList);
-                    min = findMin(myList);
-                    
-                    cout<<"\n\t*************************************"<<endl;
-                    cout<<"\n\tAverage salary of users is "<<average<<endl;
-                    cout<<"\n\tMax salary of users is "<<max1<<endl;
-                    cout<<"\n\tMin salary of users is "<<min<<endl;
-                    cout<<"\n\t*************************************"<<endl;
-                }
-               
-                //loading();
-                break;
-            case 8:
                 system("cls");
                 SET_CONSOLE_COLOR(RED);
                 cout<<"\n\t*************************************************"<<endl;
@@ -177,17 +161,17 @@ int main () {
                 deleteData();
                 push(myStack, "You used delete operation");
                 break;
-            case 9:
+            case 7:
                     system("cls");
                     SET_CONSOLE_COLOR(CYAN);
                     updateData();
                 break;
-            case 10:
+            case 8:
                     system("cls");
                     push(myStack, "You view the history of operation file");
                     readOperationFile();
                 break;
-            case 11:
+            case 9:
                     system("cls");
                     SET_CONSOLE_COLOR(GREEN);
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
@@ -196,7 +180,7 @@ int main () {
                     push(myStack, "You use viewed report Operation");
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
-            case 12:
+            case 10:
                 system("cls");
                 SET_CONSOLE_COLOR(GREEN);
                 readDataRetired();
@@ -229,22 +213,20 @@ void menu(){
     cout<<"\n\t3. Search employees by ID"<<endl; //done
     SET_CONSOLE_COLOR(YELLOW);
     cout<<"\n\t****************Filter**********************"<<endl;
-    cout<<"\n\t4. Filter employees by categories (Salary, Job, Name)"<<endl; //done
+    cout<<"\n\t4. Filter employees by categories (Salary, Age, Gender)"<<endl; //done
     SET_CONSOLE_COLOR(GREEN);
-    cout<<"\n\t****************Find**********************"<<endl;
-    cout<<"\n\t5. Find a employees who has top 1 salary"<<endl; 
-    cout<<"\n\t6. Find a employees who has top 3 salary"<<endl; 
-    cout<<"\n\t7. Find min max and average salary"<<endl; 
+    cout<<"\n\t****************View Employees by Department**********************"<<endl;
+    cout<<"\n\t5. View employees by Department (Developer, Accounting, Teaching)"<<endl; //done
     SET_CONSOLE_COLOR(RED);
     cout<<"\n\t****************Delete**********************"<<endl;
-    cout<<"\n\t8. Delete Data"<<endl; //done
+    cout<<"\n\t6. Delete Data by ID"<<endl; //done
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t****************Update**********************"<<endl;
-    cout<<"\n\t9. Update users data"<<endl; //done
+    cout<<"\n\t7. Update users data"<<endl; //done
     cout<<"\n\t**************Other Feature**********************"<<endl;
-    cout<<"\n\t10. History of operation"<<endl; //done
-    cout<<"\n\t11. Generate employee new report informations"<<endl; //done
-    cout<<"\n\t12. Show upcomming retired employees"<<endl; 
+    cout<<"\n\t8. History of operation"<<endl; //done
+    cout<<"\n\t9. Generate employee new report informations daily"<<endl; //done
+    cout<<"\n\t10. Show upcomming retired employees"<<endl; 
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
     cout<<"\n\t0. Exit the console application"<<endl; //done

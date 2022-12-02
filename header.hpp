@@ -127,7 +127,7 @@ void insertToReportFileAndSave(List *ls, int ID, string name, string job, double
         ls->tail = e;
     }
     ls->size ++; 
-    saveReportFile(ID, name, job, salary, gender, attendance, dayOff, workHours);
+    saveReportFile(ID, name, job, salary, gender, attendance, dayOff, workHours);            
 }
 
 
