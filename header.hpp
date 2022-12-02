@@ -84,7 +84,7 @@ void saveFile(string ID, string name, string job, double salary, string gender, 
 
 void saveReportFile(int ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
     fstream file;
-    file.open("reportData.txt", ios::out);
+    file.open("reportData.txt", ios::app);
     if(file.is_open()) {
         file<<"\tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
     }
@@ -109,6 +109,7 @@ int isIdExist(List *ls, string ID){
 }
 
 void insertToReportFileAndSave(List *ls, int ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
+
     Element * e;
     e = new Element();
     e->salary = salary;
@@ -127,6 +128,7 @@ void insertToReportFileAndSave(List *ls, int ID, string name, string job, double
         ls->tail = e;
     }
     ls->size ++; 
+    
     saveReportFile(ID, name, job, salary, gender, attendance, dayOff, workHours);            
 }
 

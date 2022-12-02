@@ -316,7 +316,7 @@ void searchDataBySalary() {
 
 void searchDataByAttendance() {
     string attendance;
-    cout << "\n\tEnter Employee attendance want to search : ";
+    cout << "\n\tEnter Employee attendance (P or A) want to search : ";
     cin >> attendance;
     Employee Employee;
     ifstream read;
@@ -324,7 +324,7 @@ void searchDataByAttendance() {
     while (!read.eof()) {
         read >> Employee.id;
         read.ignore();
-        getline(read, Employee.attendance);
+        getline(read, Employee.name);
         read >> Employee.age;
         read >> Employee.job;
         read >> Employee.gender;
@@ -340,7 +340,7 @@ void searchDataByAttendance() {
 
 void searchDataByGender() {
     string gender;
-    cout << "\n\tEnter Employee job want to search : ";
+    cout << "\n\tEnter Employee gender (M or F) want to search : ";
     cin >> gender;
     Employee Employee;
     ifstream read;
@@ -365,7 +365,7 @@ void searchDataByGender() {
 
 void searchDataByDayOff() {
     string dayOff;
-    cout << "\n\tEnter Employee day off want to search : ";
+    cout << "\n\tEnter Employee day off (Monday or Sunday) want to search : ";
     cin >> dayOff;
     Employee Employee;
     ifstream read;

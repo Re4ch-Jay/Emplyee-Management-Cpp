@@ -34,7 +34,8 @@ int main () {
     string name, ID, job, newID, gender, attendance, dayOff;
     double salary, average, max1, max2, max3, min, workHours;
     int choice, ch4;
-    ifstream file;
+    // ifstream file;
+    // file.open("reportData.txt", ios::in);
     string line;
     string searchID;
    
@@ -85,7 +86,9 @@ int main () {
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 cout<<"\n\t1. Filter user by salary"<<endl;
                 cout<<"\n\t2. Filter user by age"<<endl;
-                cout<<"\n\t3. Filter user by gender"<<endl;
+                cout<<"\n\t3. Filter user by gender (M or F)"<<endl;
+                cout<<"\n\t4. Filter user by day off (Monday, Sunday)"<<endl;
+                cout<<"\n\t5. Filter user by attendance (P or A)"<<endl;
                 cout<<"\n\t0. Back"<<endl; cout<<"Choice: "; cin>>ch4;
                 if(ch4 == 1){
                     system("cls");                  
@@ -108,7 +111,22 @@ int main () {
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     searchDataByGender();
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
-                }else{
+                }else if(ch4 == 4) {
+                    system("cls");
+                    push(myStack, "You use filter by gender Operation");
+                    SET_CONSOLE_COLOR(YELLOW);
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    searchDataByDayOff();
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                }else if(ch4 == 5) {
+                    system("cls");
+                    push(myStack, "You use filter by gender Operation");
+                    SET_CONSOLE_COLOR(YELLOW);
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    searchDataByAttendance();
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                }
+                else{
                     cout<<"\n\tInvalid input"<<endl;
                 }
             
@@ -183,9 +201,13 @@ int main () {
             case 10:
                 system("cls");
                 SET_CONSOLE_COLOR(GREEN);
+                cout<<"\n\t********************************************************************************************************************************"<<endl;
+                cout<<"                                                  Employees of upcomming retired"<<endl;
                 readDataRetired();
+                cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
             case 0:
+                //file.clear();
                 push(myStack, "You have been exit from our system");
                 break;
             default:
@@ -210,10 +232,10 @@ void menu(){
 
     cout<<"\n\t1. Create a new user"<<endl; //done
     cout<<"\n\t2. View all employees information"<<endl; //done
-    cout<<"\n\t3. Search employees by ID"<<endl; //done
+    cout<<"\n\t3. Search each employees by ID"<<endl; //done
     SET_CONSOLE_COLOR(YELLOW);
     cout<<"\n\t****************Filter**********************"<<endl;
-    cout<<"\n\t4. Filter employees by categories (Salary, Age, Gender)"<<endl; //done
+    cout<<"\n\t4. Filter employees by categories (Salary, Age, Gender, Attendance, Day off)"<<endl; //done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************View Employees by Department**********************"<<endl;
     cout<<"\n\t5. View employees by Department (Developer, Accounting, Teaching)"<<endl; //done
@@ -223,10 +245,10 @@ void menu(){
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t****************Update**********************"<<endl;
     cout<<"\n\t7. Update users data"<<endl; //done
-    cout<<"\n\t**************Other Feature**********************"<<endl;
+    cout<<"\n\t**************Other Features**********************"<<endl;
     cout<<"\n\t8. History of operation"<<endl; //done
     cout<<"\n\t9. Generate employee new report informations daily"<<endl; //done
-    cout<<"\n\t10. Show upcomming retired employees"<<endl; 
+    cout<<"\n\t10. Show upcomming retired employees"<<endl;  // done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
     cout<<"\n\t0. Exit the console application"<<endl; //done

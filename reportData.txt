@@ -1,1 +1,0 @@
-	ID: 33	Name: Darith	Job: Developer	Salary: $2000	Gender: M	Attendance: P	Day off: Monday	Work Hours: 10
