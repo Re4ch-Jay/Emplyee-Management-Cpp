@@ -21,6 +21,7 @@ struct Employee {
 void addEmployee() {
     List *ls;
     ls = createEmptyList();
+
     Employee Employee;
     cout << "\n\tEnter Employee name : ";
     cin.get();
@@ -40,7 +41,7 @@ void addEmployee() {
     cout << "\n\tEnter Employee salary: ";
     cin >> Employee.salary;
     ID++;
-    
+
     insertToReportFileAndSave(ls, ID, Employee.name, Employee.job, Employee.salary, Employee.gender, Employee.attendance, Employee.dayOff, Employee.workHours);
     // store upcomming retired employee
     if(Employee.age >= 50) {
@@ -195,19 +196,25 @@ void readDataAndFindAverage() {
         return ;
     }
 
+    string characters;
     double number = 0;
     double sum = 0;
     double total = 0;
-    while ( read >> number )
-    { 
-        sum = sum + number;
-        // Increase total by 1 to reflect that we have read another number
-        total = total + 1;
+    if(read >> characters) {
+        cout<<"\tRead characters"<<endl;
+    }else{
+        while ( read >> number )
+        { 
+            sum = sum + number;
+            // Increase total by 1 to reflect that we have read another number
+            total = total + 1;
+        }
+        cout << "\tTotal Salary: " << sum << endl;
+        double average = sum / total;
+        // Output the average to the user
+        cout << "\tAverage: " << average << endl;  
     }
-    cout << "\tTotal Salary: " << sum << endl;
-    double average = sum / total;
-    // Output the average to the user
-    cout << "\tAverage: " << average << endl;     
+      
     read.close();
 }
 

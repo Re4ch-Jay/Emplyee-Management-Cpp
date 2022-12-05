@@ -8,12 +8,14 @@ string OPERATION_FILE = "operation.txt";
 
 struct Node {
     string operation;
+    string name, job;
+    int ID;
     Node *next;
 };
 
 struct Stack {
     int size;
-    Node *head, *tail;
+    Node *top;
 };
 
 Stack * createEmptyStack(){
@@ -21,8 +23,7 @@ Stack * createEmptyStack(){
     stack = new Stack();
 
     stack->size = 0;
-    stack->head = NULL;
-    stack->tail = NULL;
+    stack->top = NULL;
 
     return stack;
 }
@@ -32,10 +33,9 @@ void push(Stack *stack, string operation) {
     Node * node;
     node = new Node();
     node->operation = operation;
-    node->next = stack->head;
-    stack->head = node;
+    node->next = stack->top;
     if(stack->size == 0) {
-        stack->tail = node;
+        stack->top = node;
     }
     stack->size ++; 
     // generate time
@@ -49,6 +49,7 @@ void push(Stack *stack, string operation) {
     }
     file.close();
 }
+
 
 void readOperationFile() {
     fstream file;

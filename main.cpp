@@ -9,13 +9,15 @@
 #include "util.hpp"
 #include "auth.hpp" 
 #include "header.hpp"
-#include "FileIO.hpp"
 #include "stack.hpp"
+#include "FileIO.hpp"
 using namespace std; 
 
 void authScreen();
 void menu();
 void searchIdInFile();
+void clearReportFile();
+
 
 int main () {
 
@@ -31,14 +33,7 @@ int main () {
 
     Stack * myStack;
     myStack = createEmptyStack();
-    string name, ID, job, newID, gender, attendance, dayOff;
-    double salary, average, max1, max2, max3, min, workHours;
-    int choice, ch4;
-    // ifstream file;
-    // file.open("reportData.txt", ios::in);
-    string line;
-    string searchID;
-   
+    int choice, ch4, ch12;
     
     while (choice != 0)
     {   
@@ -60,7 +55,7 @@ int main () {
                 system("cls");
                 SET_CONSOLE_COLOR(CYAN);
                 addEmployee();
-                push(myStack, "You use Create Operation");
+                push(myStack, "You used Create Operation");
                 break;
             case 2:
                 system("cls");
@@ -68,14 +63,14 @@ int main () {
                 SET_CONSOLE_COLOR(YELLOW);
                 cout << "\n\n                                                 Employee Data"<<endl;
                 readData();
-                push(myStack, "You use View Operation");
+                push(myStack, "You used Viewing Operation");
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
             case 3:
                 system("cls");
                 cout<<"\n\t******************************"<<endl;
                 searchDataById();
-                push(myStack, "You use Search Operation");
+                push(myStack, "You used Searching Operation");
                 cout<<"\n\t******************************"<<endl;
                 break;
              case 4:
@@ -84,43 +79,43 @@ int main () {
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 cout<<"\n\tSearch each user by categories"<<endl;
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
-                cout<<"\n\t1. Filter user by salary"<<endl;
-                cout<<"\n\t2. Filter user by age"<<endl;
-                cout<<"\n\t3. Filter user by gender (M or F)"<<endl;
-                cout<<"\n\t4. Filter user by day off (Monday, Sunday)"<<endl;
-                cout<<"\n\t5. Filter user by attendance (P or A)"<<endl;
+                cout<<"\n\t1. Filter employees by salary"<<endl;
+                cout<<"\n\t2. Filter employees by age"<<endl;
+                cout<<"\n\t3. Filter employees by gender (M or F)"<<endl;
+                cout<<"\n\t4. Filter employees by day off (Monday, Sunday)"<<endl;
+                cout<<"\n\t5. Filter employees by attendance (P or A)"<<endl;
                 cout<<"\n\t0. Back"<<endl; cout<<"Choice: "; cin>>ch4;
                 if(ch4 == 1){
                     system("cls");                  
                     SET_CONSOLE_COLOR(YELLOW);
-                    push(myStack, "You use filter by salary Operation");
+                    push(myStack, "You used filtering by salary Operation");
                     cout<<"\n\t********************************************************************************************************************************"<<endl;  
                     searchDataBySalary();
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 }else if(ch4 == 2) {
                     system("cls");
                     SET_CONSOLE_COLOR(YELLOW);
-                    push(myStack, "You use filter by age Operation");
+                    push(myStack, "You used filtering by age Operation");
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     searchDataByAge();
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 }else if(ch4 == 3) {
                     system("cls");
-                    push(myStack, "You use filter by gender Operation");
+                    push(myStack, "You used filtering by gender Operation");
                     SET_CONSOLE_COLOR(YELLOW);
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     searchDataByGender();
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 }else if(ch4 == 4) {
                     system("cls");
-                    push(myStack, "You use filter by gender Operation");
+                    push(myStack, "You used filtering by gender Operation");
                     SET_CONSOLE_COLOR(YELLOW);
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     searchDataByDayOff();
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 }else if(ch4 == 5) {
                     system("cls");
-                    push(myStack, "You use filter by gender Operation");
+                    push(myStack, "You used filtering by gender Operation");
                     SET_CONSOLE_COLOR(YELLOW);
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     searchDataByAttendance();
@@ -149,7 +144,7 @@ int main () {
                     cout<<"\n\tSoftware Development Department Data"<<endl;
                     readDataDeveloper();
                     cout<<"\n\t*************************************************"<<endl;
-                    push(myStack, "You used view Development department");
+                    push(myStack, "You viewed Development department");
                 }else if(ch5 == '2') {
                     system("cls");
                     SET_CONSOLE_COLOR(GREEN);
@@ -158,7 +153,7 @@ int main () {
                     readDataAccounting();
                     cout<<"\n\t*************************************************"<<endl;
                     
-                    push(myStack, "You used view Accounting department");
+                    push(myStack, "You viewed Accounting department");
                 }else if(ch5 == '3'){
                     system("cls");
                     SET_CONSOLE_COLOR(GREEN);
@@ -166,7 +161,7 @@ int main () {
                     cout<<"\n\tTeaching Department Data"<<endl;
                     readDataTeacher();
                     cout<<"\n\t*************************************************"<<endl;
-                    push(myStack, "You used view Teaching department");
+                    push(myStack, "You viewed Teaching department");
                 }
                 
                 break;
@@ -186,7 +181,7 @@ int main () {
                 break;
             case 8:
                     system("cls");
-                    push(myStack, "You view the history of operation file");
+                    push(myStack, "You viewed the history of operation file");
                     readOperationFile();
                 break;
             case 9:
@@ -195,7 +190,6 @@ int main () {
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                     cout<<"                         Employee Report you have been added to the database for today operation"<<endl;
                     readFile();
-                    push(myStack, "You use viewed report Operation");
                     cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
             case 10:
@@ -203,19 +197,46 @@ int main () {
                 SET_CONSOLE_COLOR(GREEN);
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 cout<<"                                                  Employees of upcomming retired"<<endl;
-                readDataRetired();
+                push(myStack, "You viewed upcomming retired");
+                readDataRetired();    
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
             case 11:
-                system("cls");
-                SET_CONSOLE_COLOR(GREEN);
-                cout<<"\n\t********************************************************************************************************************************"<<endl;
-                cout<<"                                                  Statistics in a sumarize"<<endl;
-                readDataAndFindAverage();
-                cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    system("cls");
+                    SET_CONSOLE_COLOR(GREEN);
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    cout<<"                                                  Feature to copy"<<endl;
+                    cout<<"\n\t********************************************************************************************************************************"<<endl;
+                    do
+                    {
+                        cout<<"\n\t1. Copy all employees from database"<<endl;
+                        cout<<"\n\t2. Copy employees from Development Department"<<endl;
+                        cout<<"\n\t3. Copy employees from Accounting Department"<<endl;
+                        cout<<"\n\t4. Copy employees from Teaching Department"<<endl;
+                        cout<<"\n\t0. Back"<<endl;
+                        cout<<"\n\tChoice: "; cin>>ch12;
+                        if(ch12 == 0){
+                            cout<<"\n\tBack"<<endl;
+                        }
+                        else if(ch12 == 1){
+                            system("cls");
+                            copyFileEmployees();
+                        }else if(ch12 == 2){
+                            system("cls");
+                            copyFileDevelopment();
+                        }else if(ch12 == 3){
+                            system("cls");
+                            copyFileAccounting();
+                        }else if(ch12 == 4){
+                            system("cls");
+                            copyFileTeaching();
+                        }else {
+                            system("cls");
+                            cout<<"\n\tInvalid input"<<endl;
+                        }
+                    } while (ch12 != 0);
                 break;
             case 0:
-                //file.clear();
                 push(myStack, "You have been exit from our system");
                 break;
             default:
@@ -252,18 +273,19 @@ void menu(){
     cout<<"\n\t6. Delete Data by ID"<<endl; //done
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t****************Update**********************"<<endl;
-    cout<<"\n\t7. Update users data"<<endl; //done
+    cout<<"\n\t7. Update employees data"<<endl; //done
     cout<<"\n\t**************Other Features**********************"<<endl;
     cout<<"\n\t8. History of operation"<<endl; //done
     cout<<"\n\t9. Generate employee new report informations daily"<<endl; //done
     cout<<"\n\t10. Show upcomming retired employees"<<endl;  // done
-    cout<<"\n\t11. Show total and average salary"<<endl;  // done
+    cout<<"\n\t11. Copy employees data to your own file from different department (Development, Teaching, Accounting)"<<endl; //done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
     cout<<"\n\t0. Exit the console application"<<endl; //done
 }
 
 void authScreen() {
+    clearReportFile();
     SET_CONSOLE_COLOR(YELLOW);
     cout << "\n\t***** Login or Register *****\n\n";
     cout << "===================================\n";
@@ -271,6 +293,7 @@ void authScreen() {
     string LoR;
     while(true){
         SET_CONSOLE_COLOR(GREEN);
+        cout<<"\t";
         getline(cin,LoR);
         if(LoR == "login"){
             login();
@@ -282,4 +305,12 @@ void authScreen() {
             cout << "\n\t*Please write (login) or (register) correctly*\n" ;
         }
     }
+}
+
+
+void clearReportFile() {
+    fstream write;
+    write.open("reportData.txt", ios::out);
+    write << "" ;
+    write.close();
 }

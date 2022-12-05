@@ -19,7 +19,7 @@ while(On_Off){
     user.open("users.txt", ios::in);
     if(countt < 3 && Off && user.is_open()){
         if(countt > 0){
-        cout << "\nPassword or UserName are not correct!!" << endl;
+        cout << "\nPassword or Username are not correct!!" << endl;
         left--;
         cout << "You have *" << left << "* attempts left \n" << endl;
         }
@@ -44,11 +44,6 @@ while(On_Off){
             SET_CONSOLE_COLOR(YELLOW);
             if(PassEnter == "") cout<<"\n\t*****Please input password*****"<<endl;
         } while (PassEnter == "");
-
-        // cout << "Enter UserName: ";
-        // getline(cin,UseEnter);
-        // cout << "Enter Password: ";
-        // getline(cin,PassEnter);
         
         countt++;
         string read;
@@ -82,11 +77,11 @@ int MiniPass ;
 bool if_ON = true;
 bool oo = true;
 
-cout << "\n**** Create New Account **** \n";
+cout << "\n\t**** Create New Account **** \n";
 
 //UserName Validation
 while(oo){
-    cout << "Enter New UserName: ";
+    cout << "\n\tEnter New UserName: ";
     getline(cin, newName);
     MiniPass = newName.length();
     fstream yusers;
@@ -112,14 +107,14 @@ while(oo){
 }
 //Password Validation
 while(true){
-    cout << "Enter New password: ";
+    cout << "\n\tEnter New password: ";
     getline(cin,newPass);
-    cout << "Confirm the password: ";
+    cout << "\n\tConfirm the password: ";
     getline(cin,confirmPass);
     MiniPass = newPass.length();
 
     if (MiniPass < 5){
-        cout << "\nYour password is weak at least 5 letters\n \n";
+        cout << "\n\tYour password is weak at least 5 letters\n \n";
     }
     else if(confirmPass == newPass){
         fstream users;
@@ -133,7 +128,7 @@ while(true){
         cout << "===================================\n";
         break;}
     else{
-        cout << "\nPassword confirmation not correct! \n" << endl;
+        cout << "\n\tPassword confirmation not correct! \n" << endl;
 
         }
         }
