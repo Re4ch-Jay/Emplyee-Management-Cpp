@@ -206,6 +206,14 @@ int main () {
                 readDataRetired();
                 cout<<"\n\t********************************************************************************************************************************"<<endl;
                 break;
+            case 11:
+                system("cls");
+                SET_CONSOLE_COLOR(GREEN);
+                cout<<"\n\t********************************************************************************************************************************"<<endl;
+                cout<<"                                                  Statistics in a sumarize"<<endl;
+                readDataAndFindAverage();
+                cout<<"\n\t********************************************************************************************************************************"<<endl;
+                break;
             case 0:
                 //file.clear();
                 push(myStack, "You have been exit from our system");
@@ -249,6 +257,7 @@ void menu(){
     cout<<"\n\t8. History of operation"<<endl; //done
     cout<<"\n\t9. Generate employee new report informations daily"<<endl; //done
     cout<<"\n\t10. Show upcomming retired employees"<<endl;  // done
+    cout<<"\n\t11. Show total and average salary"<<endl;  // done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
     cout<<"\n\t0. Exit the console application"<<endl; //done

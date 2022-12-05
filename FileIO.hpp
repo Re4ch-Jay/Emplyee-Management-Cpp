@@ -181,6 +181,36 @@ void readData() {
     read.close();
 }
 
+void readDataAndFindAverage() {
+    Employee Employee;
+    ifstream read;
+    read.open("Employee.txt");
+    if (read.fail())
+    {
+        // Output 'error opening file' as an exit message to inform the user what
+        // has gone wrong.
+        cout << "Error opening file!" << endl;
+
+        // Returning 1 will exit the program with an error status
+        return ;
+    }
+
+    double number = 0;
+    double sum = 0;
+    double total = 0;
+    while ( read >> number )
+    { 
+        sum = sum + number;
+        // Increase total by 1 to reflect that we have read another number
+        total = total + 1;
+    }
+    cout << "\tTotal Salary: " << sum << endl;
+    double average = sum / total;
+    // Output the average to the user
+    cout << "\tAverage: " << average << endl;     
+    read.close();
+}
+
 void readDataRetired() {
     Employee Employee;
     ifstream read;
