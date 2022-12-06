@@ -320,6 +320,10 @@ int searchDataById() {
             return id;
         }
     }
+    if(read.eof() && Employee.id != id) {
+        cout<<"\n\tThis data with these id is not exist"<<endl;
+        return 0;
+    }
     
 }
 
@@ -447,7 +451,10 @@ void searchDataByAge() {
 
 void deleteData() {
     int id = searchDataById();
-    cout << "\n\tYou want to delete record (y/n) : ";
+    if(id == 0) {
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to delete record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -593,6 +600,10 @@ void deleteData() {
         cout << "\n\tData deleted successfuly";
         
 
+        // save the data that has been delete to reportData file
+        fstream writeToReport;
+        writeToReport.open("reportData.txt", ios::app);
+
         // delete from all employees file
         ofstream tempFile;
         tempFile.open("temp.txt");
@@ -620,9 +631,14 @@ void deleteData() {
                 tempFile << "\n" << Employee.workHours;
                 tempFile << "\n" << Employee.salary;
             }
+            // check if Id is equal than saved it to reportData.txt
+            if(Employee.id == id) {
+                writeToReport << "\tDelete data: ID: " << Employee.id <<"\tName: "<< Employee.name <<"\tJob: "<< Employee.job <<endl;
+            }
         }
         read.close();
         tempFile.close();
+        writeToReport.close();
         remove("Employee.txt");
         rename("temp.txt", "Employee.txt");
         cout << "\n\tData deleted successfuly";
@@ -632,6 +648,7 @@ void deleteData() {
         cout << "\n\tRecord not deleted";
     }
     ID--; // not test
+    }
 }
 
 void updateData() {
@@ -752,8 +769,7 @@ void updateData() {
         remove("Developer.txt");
         rename("temp3.txt", "Developer.txt");
         cout << "\n\tData updated successfuly";
-
-
+        
         // uppdate accounting department file
         ofstream tempFile4;
         tempFile4.open("temp4.txt");
@@ -799,7 +815,6 @@ void updateData() {
         rename("temp4.txt", "Accounting.txt");
         cout << "\n\tData updated successfuly";
 
-
         // uppdate teacher department file
         ofstream tempFile5;
         tempFile5.open("temp5.txt");
@@ -844,8 +859,6 @@ void updateData() {
         remove("Teacher.txt");
         rename("temp5.txt", "Teacher.txt");
         cout << "\n\tData updated successfuly";
-
-
 
         // update all employees from employee file
         ofstream tempFile;
@@ -899,7 +912,10 @@ void updateData() {
 
 void updateDataName() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0) {
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -1144,11 +1160,16 @@ void updateDataName() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
+    
 }
 
 void updateDataAge() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -1392,11 +1413,15 @@ void updateDataAge() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
 }
 
 void updateDataAttendance() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -1650,11 +1675,15 @@ void updateDataAttendance() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
 }
 
 void updateDataGender() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -1907,11 +1936,16 @@ void updateDataGender() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
+    
 }
 
 void updateDataDayOff() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -2155,11 +2189,16 @@ void updateDataDayOff() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
+    
 }
 
 void updateDataSalary() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -2403,11 +2442,16 @@ void updateDataSalary() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
+    
 }
 
 void updateDataWorkHours() {
     int id = searchDataById();
-    cout << "\n\tYou want to update record (y/n) : ";
+    if(id == 0){
+        cout<<endl;
+    }else{
+        cout << "\n\tYou want to update record (y/n) : ";
     char choice;
     cin >> choice;
     if (choice == 'y') {
@@ -2651,4 +2695,6 @@ void updateDataWorkHours() {
     else {
         cout << "\n\tRecord not deleted";
     }
+    }
+    
 }

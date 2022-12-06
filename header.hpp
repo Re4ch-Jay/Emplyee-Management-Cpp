@@ -192,7 +192,7 @@ void saveReportFile(int ID, string name, string job, double salary, string gende
     fstream file;
     file.open("reportData.txt", ios::app);
     if(file.is_open()) {
-        file<<"\tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
+        file<<"Added data: \tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
     }
     file.close();
 }

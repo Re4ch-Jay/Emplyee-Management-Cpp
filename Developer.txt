@@ -53,12 +53,3 @@ P
 Monday
 8
 2400
-20
-Smith
-30
-Developer
-M
-A
-Monday
-10
-2000

@@ -8,8 +8,7 @@ string OPERATION_FILE = "operation.txt";
 
 struct Node {
     string operation;
-    string name, job;
-    int ID;
+    string time;
     Node *next;
 };
 
@@ -32,15 +31,20 @@ Stack * createEmptyStack(){
 void push(Stack *stack, string operation) {
     Node * node;
     node = new Node();
-    node->operation = operation;
-    node->next = stack->top;
-    if(stack->size == 0) {
-        stack->top = node;
-    }
-    stack->size ++; 
     // generate time
     time_t now = time(0);
     char* dt = ctime(&now);
+    node->operation = operation;
+    node->time = dt;
+
+    node->next = stack->top;
+    stack->top = node;
+
+    if(stack->size == 0) {
+        stack->top = node;
+    }
+    stack->size++; 
+
     // open file
     fstream file;
     file.open(OPERATION_FILE, ios::app);
@@ -50,7 +54,15 @@ void push(Stack *stack, string operation) {
     file.close();
 }
 
-
+void displayStack(Stack *s) {
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        tmp = tmp->next;
+    }
+}
 void readOperationFile() {
     fstream file;
     file.open(OPERATION_FILE, ios::in);

@@ -186,34 +186,56 @@ int main () {
                     cout<<"\n\t5. Update day off"<<endl;
                     cout<<"\n\t6. Update attendance"<<endl;
                     cout<<"\n\t7. Update work hours"<<endl;
+                    cout<<"\n\t0. Exit"<<endl;
                     char ch7;
                     cout<<"\n\tChoice: "; cin>>ch7;
+                    push(myStack, "You used update operation");
                     if(ch7 == '1') {
                         updateDataName();
+        
                     }else if(ch7 == '2'){
                         updateDataAge();
+                        
                     }
                     else if(ch7 == '3'){
                         updateDataSalary();
+                       
                     }else if(ch7 == '4'){
                         updateDataGender();
+                       
                     }
                     else if(ch7 == '5'){
                         updateDataDayOff();
+                    
                     }else if(ch7 == '6'){
                         updateDataAttendance();
+                      
                     }
                     else if(ch7 == '7'){
                         updateDataWorkHours();
+                        
                     }else {
-                        cout<<"\n\tInvalid Input"<<endl;
+                        cout<<"\n\tBack"<<endl;
                     }
 
                 break;
             case 8:
                     system("cls");
-                    push(myStack, "You viewed the history of operation file");
-                    readOperationFile();
+                    cout<<"\n\t1. Read histroy operation from file (Can be few days ago)"<<endl;
+                    cout<<"\n\t2. Read history operation daily"<<endl;
+                    cout<<"\n\t0. Back"<<endl;
+                    char ch8;
+                    cout<<"\n\tChoice: "; cin>>ch8;
+                    if(ch8 == '1'){
+                        readOperationFile();
+                        push(myStack, "You viewed previous operation from file");
+                    }else if(ch8 == '2'){
+                        displayStack(myStack);
+                        push(myStack, "You viewed previous operation daily");
+                    }else{
+                        cout<<"\n\tInvalid Input"<<endl;
+                    }
+                    
                 break;
             case 9:
                     system("cls");
@@ -247,20 +269,24 @@ int main () {
                         cout<<"\n\t0. Back"<<endl;
                         cout<<"\n\tChoice: "; cin>>ch12;
                         if(ch12 == 0){
-                            cout<<"\n\tBack"<<endl;
+                            break;
                         }
                         else if(ch12 == 1){
                             system("cls");
                             copyFileEmployees();
+                            push(myStack, "You have been copy file employees from our system");
                         }else if(ch12 == 2){
                             system("cls");
                             copyFileDevelopment();
+                            push(myStack, "You have been copy file development from our system");
                         }else if(ch12 == 3){
                             system("cls");
                             copyFileAccounting();
+                            push(myStack, "You have been copy file accounting from our system");
                         }else if(ch12 == 4){
                             system("cls");
                             copyFileTeaching();
+                            push(myStack, "You have been copy file teaching from our system");
                         }else {
                             system("cls");
                             cout<<"\n\tInvalid input"<<endl;
