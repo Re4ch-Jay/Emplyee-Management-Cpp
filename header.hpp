@@ -198,22 +198,6 @@ void saveReportFile(int ID, string name, string job, double salary, string gende
 }
 
 
-
-int isIdExist(List *ls, string ID){
-    Element *tmp;
-    tmp = ls->head;
-    int result = 0;
-
-    while (tmp != NULL)
-    {
-        if(tmp->ID == ID) {
-            result = 1;
-        }
-        tmp = tmp->next;
-    }
-    return result;
-}
-
 void insertToReportFileAndSave(List *ls, int ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
 
     Element * e;
@@ -238,53 +222,6 @@ void insertToReportFileAndSave(List *ls, int ID, string name, string job, double
 }
 
 
-void insertBegin(List *ls, string ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
-    Element * e;
-    e = new Element();
-
-    if(isIdExist(ls, ID) == 1) ShowMessage("\n\tThis ID is already existed", RED);
-
-    e->salary = salary;
-    e->ID = ID;
-    e->name = name;
-    e->job = job;
-    e->attendance = attendance;
-    e->gender = gender;
-    e->dayOff = dayOff;
-    e->workHours = workHours;
-
-
-    e->next = ls->head;
-    ls->head = e;
-    if(ls->size == 0) {
-        ls->tail = e;
-    }
-    ls->size ++; 
-}
-
-void insertEnd(List *ls, string ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours){
-    Element * e;
-    if(ls->size == 0){
-        insertBegin(ls, ID, name, job, salary, gender, attendance, dayOff, workHours);
-    }
-    else {
-        e = new Element();
-
-        e->salary = salary;
-        e->ID = ID;
-        e->name = name;
-        e->job = job;
-
-        e->next = NULL;
-
-        ls->tail->next = e;
-        ls->tail = e;
-        ls->size ++;
-    }
-    saveFile(ID, name, job, salary, gender, attendance, dayOff, workHours);
-
-}
-
 void displayData(List *ls){
     Element * tmp;
     tmp = ls->head;
@@ -295,18 +232,6 @@ void displayData(List *ls){
         cout<<"\tID: "<<tmp->ID<<"\tName: "<<tmp->name<<"\tJob: "<<tmp->job<<"\tSalary: $"<<tmp->salary<<"\tGender: "<<tmp->gender<<"\tAttendance: "<<tmp->attendance<<"\tDay off: "<<tmp->dayOff<<"\tWork Hours: "<<tmp->workHours<<endl;
         tmp = tmp->next;
     }
-}
-
-void displayDataAndSave(List *ls){
-    Element * tmp;
-    tmp = ls->head;
-    while (tmp != NULL) cout<<"\n\tThere is no data right now"<<endl;
-    {
-        ShowMessage("\n\tAll data in the list", CYAN);
-        cout<<"\tID: "<<tmp->ID<<"\tName: "<<tmp->name<<"\tJob: "<<tmp->job<<"\tSalary: $"<<tmp->salary<<"\tGender: "<<tmp->gender<<"\tAttendance: "<<tmp->attendance<<"\tDay off: "<<tmp->dayOff<<"\tWork Hours: "<<tmp->workHours<<endl;
-        tmp = tmp->next;
-    }
-    saveData(ls);
 }
 
 

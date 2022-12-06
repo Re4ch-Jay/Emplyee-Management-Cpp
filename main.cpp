@@ -18,7 +18,6 @@ void menu();
 void searchIdInFile();
 void clearReportFile();
 
-
 int main () {
 
     ifstream read;
@@ -177,7 +176,39 @@ int main () {
             case 7:
                     system("cls");
                     SET_CONSOLE_COLOR(CYAN);
-                    updateData();
+                    cout<<"\n\t*************************************************"<<endl;
+                    cout<<"\n\tUpdate Employees data"<<endl;
+                    cout<<"\n\t*************************************************"<<endl;
+                    cout<<"\n\t1. Update name"<<endl;
+                    cout<<"\n\t2. Update age"<<endl;
+                    cout<<"\n\t3. Update salary"<<endl;
+                    cout<<"\n\t4. Update gender"<<endl;
+                    cout<<"\n\t5. Update day off"<<endl;
+                    cout<<"\n\t6. Update attendance"<<endl;
+                    cout<<"\n\t7. Update work hours"<<endl;
+                    char ch7;
+                    cout<<"\n\tChoice: "; cin>>ch7;
+                    if(ch7 == '1') {
+                        updateDataName();
+                    }else if(ch7 == '2'){
+                        updateDataAge();
+                    }
+                    else if(ch7 == '3'){
+                        updateDataSalary();
+                    }else if(ch7 == '4'){
+                        updateDataGender();
+                    }
+                    else if(ch7 == '5'){
+                        updateDataDayOff();
+                    }else if(ch7 == '6'){
+                        updateDataAttendance();
+                    }
+                    else if(ch7 == '7'){
+                        updateDataWorkHours();
+                    }else {
+                        cout<<"\n\tInvalid Input"<<endl;
+                    }
+
                 break;
             case 8:
                     system("cls");

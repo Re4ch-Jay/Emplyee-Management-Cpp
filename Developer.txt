@@ -1,19 +1,19 @@
 
 1
-Phat Panhareach
+Panhareach
 19
 Developer
 M
 P
-Monday
-10
-3000
+Sunday
+8
+4000
 2
 Meng Oudom
-20
+21
 Developer
-M
-A
+F
+P
 Sunday
 10
 2000
@@ -53,3 +53,12 @@ P
 Monday
 8
 2400
+20
+Smith
+30
+Developer
+M
+A
+Monday
+10
+2000
