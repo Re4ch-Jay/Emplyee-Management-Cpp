@@ -12,8 +12,10 @@
 8. History of operation
 9. Generate employee new report informations daily
 10. Show upcomming retired employees
-11. Copy employees data to your own file from different department (Development, Teaching, Accounting)
-0. Exit the console applicatio
+11. Copy employees data to your own file
+12. Login
+13. Register
+14. Exit the console applicatio
 
 ##### This project included:
 

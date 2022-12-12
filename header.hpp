@@ -56,9 +56,9 @@ void copyFileEmployees() {
     out_file.close();
 }
 
-void copyFileDevelopment() {
+void copyFileRetired() {
     string line, filename;
-    ifstream ini_file{ "Developer.txt"};
+    ifstream ini_file{ "retired.txt"};
     cout<<"Input filename: "; cin>>filename;
     ofstream out_file{ filename + ".txt" };
     if (ini_file && out_file) {
@@ -74,45 +74,6 @@ void copyFileDevelopment() {
     ini_file.close();
     out_file.close();
 }
-
-void copyFileAccounting() {
-    string line, filename;
-    ifstream ini_file{ "Accounting.txt"};
-    cout<<"Input filename: "; cin>>filename;
-    ofstream out_file{ filename + ".txt" };
-    if (ini_file && out_file) {
-  
-        while (getline(ini_file, line)) {
-            out_file << line << "\n";
-        }
-        cout << "Your file has been created\n";
-    }
-    else {
-        printf("Cannot read File");
-    }
-    ini_file.close();
-    out_file.close();
-}
-
-void copyFileTeaching() {
-    string line, filename;
-    ifstream ini_file{ "Teacher.txt"};
-    cout<<"Input filename: "; cin>>filename;
-    ofstream out_file{ filename + ".txt" };
-    if (ini_file && out_file) {
-  
-        while (getline(ini_file, line)) {
-            out_file << line << "\n";
-        }
-        cout << "Your file has been created\n";
-    }
-    else {
-        printf("Cannot read File");
-    }
-    ini_file.close();
-    out_file.close();
-}
-
 
 
 void copyFileReport() {
@@ -192,7 +153,7 @@ void saveReportFile(int ID, string name, string job, double salary, string gende
     fstream file;
     file.open("reportData.txt", ios::app);
     if(file.is_open()) {
-        file<<"Added data: \tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
+        file<<"\tAdded data: \tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
     }
     file.close();
 }
@@ -237,8 +198,8 @@ void displayData(List *ls){
 
 int loading(){
     const int trigger = 500; // ms
-    const int numDots = 4;
-    const char prompt[] = "\n\tLoading\n";
+    const int numDots = 3;
+    const char prompt[] = "\n\tLoading";
     long long k = 0;
     while (1 && k < 1) {
         // Return and clear with spaces, then return and print prompt.

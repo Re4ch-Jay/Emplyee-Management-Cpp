@@ -15,7 +15,6 @@ using namespace std;
 
 void authScreen();
 void menu();
-void searchIdInFile();
 void clearReportFile();
 
 int main () {
@@ -39,6 +38,8 @@ int main () {
         if(isAuth == true) {
             
             system("pause");
+            system("cls");
+            loading();
             menu();
             push(myStack, "You have been log in to our system");
             SET_CONSOLE_COLOR(GREEN);
@@ -135,13 +136,14 @@ int main () {
                 cout<<"\n\t1. Software Developement"<<endl;
                 cout<<"\n\t2. Accounting"<<endl;
                 cout<<"\n\t3. Teaching"<<endl; 
+                cout<<"\n\t0. Back"<<endl; 
                 cout<<"\n\tChoice: "; cin>>ch5;
                 if(ch5 == '1'){
                     system("cls");
                     SET_CONSOLE_COLOR(GREEN);
                     cout<<"\n\t*************************************************"<<endl;
                     cout<<"\n\tSoftware Development Department Data"<<endl;
-                    readDataDeveloper();
+                    viewDeveloperDepartment();
                     cout<<"\n\t*************************************************"<<endl;
                     push(myStack, "You viewed Development department");
                 }else if(ch5 == '2') {
@@ -149,16 +151,15 @@ int main () {
                     SET_CONSOLE_COLOR(GREEN);
                     cout<<"\n\t*************************************************"<<endl;
                     cout<<"\n\tAccounting Department Data"<<endl;
-                    readDataAccounting();
+                    viewAccountingDepartment();
                     cout<<"\n\t*************************************************"<<endl;
-                    
                     push(myStack, "You viewed Accounting department");
                 }else if(ch5 == '3'){
                     system("cls");
                     SET_CONSOLE_COLOR(GREEN);
                     cout<<"\n\t*************************************************"<<endl;
                     cout<<"\n\tTeaching Department Data"<<endl;
-                    readDataTeacher();
+                    viewTeachingDepartment();
                     cout<<"\n\t*************************************************"<<endl;
                     push(myStack, "You viewed Teaching department");
                 }
@@ -263,9 +264,7 @@ int main () {
                     do
                     {
                         cout<<"\n\t1. Copy all employees from database"<<endl;
-                        cout<<"\n\t2. Copy employees from Development Department"<<endl;
-                        cout<<"\n\t3. Copy employees from Accounting Department"<<endl;
-                        cout<<"\n\t4. Copy employees from Teaching Department"<<endl;
+                        cout<<"\n\t2. Copy all upcomming retired employees"<<endl;
                         cout<<"\n\t0. Back"<<endl;
                         cout<<"\n\tChoice: "; cin>>ch12;
                         if(ch12 == 0){
@@ -277,16 +276,8 @@ int main () {
                             push(myStack, "You have been copy file employees from our system");
                         }else if(ch12 == 2){
                             system("cls");
-                            copyFileDevelopment();
-                            push(myStack, "You have been copy file development from our system");
-                        }else if(ch12 == 3){
-                            system("cls");
-                            copyFileAccounting();
-                            push(myStack, "You have been copy file accounting from our system");
-                        }else if(ch12 == 4){
-                            system("cls");
-                            copyFileTeaching();
-                            push(myStack, "You have been copy file teaching from our system");
+                            copyFileRetired();
+                            push(myStack, "You have been copy file retired from our system");
                         }else {
                             system("cls");
                             cout<<"\n\tInvalid input"<<endl;
@@ -335,7 +326,7 @@ void menu(){
     cout<<"\n\t8. History of operation"<<endl; //done
     cout<<"\n\t9. Generate employee new report informations daily"<<endl; //done
     cout<<"\n\t10. Show upcomming retired employees"<<endl;  // done
-    cout<<"\n\t11. Copy employees data to your own file from different department (Development, Teaching, Accounting)"<<endl; //done
+    cout<<"\n\t11. Copy employees data to your own file."<<endl; //done
     SET_CONSOLE_COLOR(GREEN);
     cout<<"\n\t****************Exit**********************"<<endl;
     cout<<"\n\t0. Exit the console application"<<endl; //done
