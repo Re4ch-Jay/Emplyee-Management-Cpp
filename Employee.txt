@@ -153,7 +153,7 @@ Sunday
 11
 2500
 23
-Johnny Dept
+Johnny
 34
 Developer
 M
@@ -161,12 +161,21 @@ P
 Sunday
 13
 3000
-24
-Jackson
-55
+26
+Darith
+25
+Teacher
+M
+P
+Sunday
+10
+2000
+27
+Darong
+26
 Accounting
-F
-A
-Friday
+M
+P
+Sunday
 10
 2000
