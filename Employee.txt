@@ -37,7 +37,7 @@ Sunday
 1000
 5
 Thea
-50
+51
 Accounting
 M
 P
@@ -88,7 +88,7 @@ F
 A
 Monday
 10
-2000
+2300
 11
 Pheak
 21
@@ -177,5 +177,14 @@ Accounting
 M
 P
 Sunday
+10
+2000
+28
+Gokusak
+20
+Developer
+M
+P
+a
 10
 2000

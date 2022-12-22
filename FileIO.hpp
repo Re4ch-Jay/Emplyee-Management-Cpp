@@ -64,11 +64,11 @@ void addEmployee() {
         }
     } while (Employee.attendance != "P" || Employee.attendance != "A");
     
-    cout << "\n\tEnter Employee Day off: ";
+    cout << "\n\tEnter Employee Day off (Monday - Sunday): ";
     cin >> Employee.dayOff;
-    cout << "\n\tEnter Employee work hours : ";
+    cout << "\n\tEnter Employee work hours (e.g 10): ";
     cin >> Employee.workHours;
-    cout << "\n\tEnter Employee salary: ";
+    cout << "\n\tEnter Employee salary (e.g. 3000): ";
     cin >> Employee.salary;
     ID++;
 
@@ -123,7 +123,7 @@ void print(Employee s) {
     cout << "\tAttendance is : " << s.attendance;
     cout << "\tDay Off is : " << s.dayOff;
     cout << "\tWork hours is : " << s.workHours;
-    cout << "\tSalary is : " << s.salary;
+    cout << "\tSalary is : $" << s.salary;
     cout <<endl;
 }
 
