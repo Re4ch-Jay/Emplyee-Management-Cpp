@@ -322,11 +322,11 @@ void menu(){
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t***************************************"<<endl;
     cout<<  "\t*                                     *"<<endl;
-    cout<<  "\t*      Salary Management System       *"<<endl;
+    cout<<  "\t*      Employee Management System       *"<<endl;
     cout<<  "\t*                                     *"<<endl;
     cout<<"\n\t***************************************"<<endl;
 
-    cout<<"\n\t1. Create a new user"<<endl; //done
+    cout<<"\n\t1. Create a new employee"<<endl; //done
     cout<<"\n\t2. View all employees information"<<endl; //done
     cout<<"\n\t3. Search each employees by ID"<<endl; //done
     SET_CONSOLE_COLOR(YELLOW);

@@ -11,7 +11,12 @@ bool On_Off = true;
 bool Off = true;
 int countt = 0;
 int left = 3;
-
+SET_CONSOLE_COLOR(CYAN);
+    cout<<"\n\t***************************************"<<endl;
+    cout<<  "\t*                                     *"<<endl;
+    cout<<  "\t*      Salary Management System       *"<<endl;
+    cout<<  "\t*                                     *"<<endl;
+    cout<<"\n\t***************************************"<<endl;
 cout << "\n**** Login to your Account **** \n";
 while(On_Off){
     //********************************************
@@ -40,7 +45,7 @@ while(On_Off){
             SET_CONSOLE_COLOR(YELLOW);
             cout<<"\n\tEnter Password: ";
             SET_CONSOLE_COLOR(GREEN);
-            getline(cin,PassEnter);
+            getline(cin,PassEnter);getchar();
             SET_CONSOLE_COLOR(YELLOW);
             if(PassEnter == "") cout<<"\n\t*****Please input password*****"<<endl;
         } while (PassEnter == "");

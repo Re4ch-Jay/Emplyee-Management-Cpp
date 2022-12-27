@@ -21,7 +21,7 @@ struct Employee {
 void addEmployee() {
     List *ls;
     ls = createEmptyList();
-
+    char choice;
     Employee Employee;
     cout << "\n\tEnter Employee name : ";
     cin.get();
@@ -31,41 +31,94 @@ void addEmployee() {
     
     do
     {
-        cout << "\n\tEnter Employee job (Developer, Teacher, Accounting) **The department is not allowed to change : ";
-        cin >> Employee.job;
+        cout << "\n\tEnter Employee job (1. Developer, 2. Teacher, 3. Accounting): ";
+        cin >> choice;
+        switch (choice)
+        {
+        case '1':
+            Employee.job = "Developer";
+            break;
+        case '2':
+            Employee.job = "Teacher";
+            break;
+        case '3':
+            Employee.job = "Accounting";
+            break;
+        default:
+            cout<<"Wrong input"<<endl;
+            break;
+        }
         if(Employee.job == "Developer" || Employee.job == "Teacher" || Employee.job == "Accounting") {
             break;
-        }else{
-            cout<<"\n\tPlease input incorrectly"<<endl;
         }
     } while (Employee.job != "Developer" || Employee.job != "Teacher" || Employee.job != "Accounting");
     
     
     do
     {
-        cout << "\n\tEnter Employee gender : ";
-        cin >> Employee.gender;
+        cout << "\n\tEnter Employee gender(1. M or 2. F) : ";
+        cin >>choice;
+        switch (choice)
+        {
+        case '1':
+            Employee.gender = "M";
+            break;
+        case '2':
+            Employee.gender = "F";
+            break;
+        default:
+            cout<<"Wrong input"<<endl;
+            break;
+        }
+
         if(Employee.gender == "M" || Employee.gender == "F") {
             break;
-        }else{
-            cout<<"\n\tPlease input incorrectly"<<endl;
         }
         
     } while (Employee.gender != "M" || Employee.gender != "F");
     
     do
     {
-        cout << "\n\tEnter Employee attendance (P or A) : ";
-        cin >> Employee.attendance;
+        cout << "\n\tEnter Employee attendance (1.P or 2.A) : ";
+        cin >> choice;
+        switch (choice)
+        {
+        case '1':
+            Employee.attendance = "P";
+            break;
+        case '2':
+            Employee.attendance = "A";
+            break;
+        default:
+            cout<<"Wrong input"<<endl;
+            break;
+        }
         if(Employee.attendance == "P" || Employee.attendance == "A") {
             break;
-        }else{
-            cout<<"\n\tPlease input incorrectly"<<endl;
         }
     } while (Employee.attendance != "P" || Employee.attendance != "A");
     
-    cout << "\n\tEnter Employee Day off (Monday - Sunday): ";
-    cin >> Employee.dayOff;
+    do
+    {
+        cout << "\n\tEnter Employee Day off (1. Monday - 2. Sunday): ";
+        cin >> choice;
+        switch (choice)
+        {
+        case '1':
+            Employee.dayOff = "Monday";
+            break;
+        case '2':
+            Employee.dayOff = "Sunday";
+            break;
+        default:
+            cout<<"Wrong input"<<endl;
+            break;
+        }
+        if(Employee.dayOff == "Monday" || Employee.dayOff == "Sunday"){
+            break;
+        }
+    } while (Employee.dayOff != "Monday" || Employee.dayOff != "Sunday");
+    
     cout << "\n\tEnter Employee work hours (e.g 10): ";
     cin >> Employee.workHours;
     cout << "\n\tEnter Employee salary (e.g. 3000): ";
@@ -115,15 +168,15 @@ void addEmployee() {
 }
 
 void print(Employee s) {
-    cout << "\tID is : " << s.id;
-    cout << "\tName is : " << s.name;
-    cout << "\tAge is : " << s.age;
-    cout << "\tJob is : " << s.job;
-    cout << "\tGender is : " << s.gender;
-    cout << "\tAttendance is : " << s.attendance;
-    cout << "\tDay Off is : " << s.dayOff;
-    cout << "\tWork hours is : " << s.workHours;
-    cout << "\tSalary is : $" << s.salary;
+    cout << s.id<<"\t\t";
+    cout << s.name<<"\t\t";
+    cout << s.age<<"\t\t";
+    cout << s.job<<"\t\t";
+    cout << s.gender<<"\t\t";
+    cout << s.attendance<<"\t\t";
+    cout << s.dayOff<<"\t\t";
+    cout << s.workHours<<"\t\t";
+    cout << s.salary<<"\t\t";
     cout <<endl;
 }
 
@@ -134,6 +187,7 @@ void readData() {
     if(!read.is_open()){
         cout<<"\n\tCould not open the file"<<endl;
     }
+    cout<<"ID: \t\tName: \t\tAge: \t\tJob: \t\tGender: \t\tAttendance: \t\tDay off: \t\tWork Hours: \t\tSalary: \t\t"<<endl;
     while (!read.eof()) {
         read >> Employee.id;
         read.ignore();
