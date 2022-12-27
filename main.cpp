@@ -331,7 +331,7 @@ void authScreen() {
     SET_CONSOLE_COLOR(CYAN);
     cout<<"\n\t***************************************"<<endl;
     cout<<  "\t*                                     *"<<endl;
-    cout<<  "\t*      Salary Management System       *"<<endl;
+    cout<<  "\t*      Employee Management System     *"<<endl;
     cout<<  "\t*                                     *"<<endl;
     cout<<"\n\t***************************************"<<endl;
     cout << "\n\t***** Login or Register *****\n\n";

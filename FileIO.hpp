@@ -183,7 +183,7 @@ int searchDataById() {
             return id;
         }
     }
-    if(!read.eof() && Employee.id != id) {
+    if(read.eof() && Employee.id != id) {
         cout<<"\n\tNo data found"<<endl;
     }
 }
