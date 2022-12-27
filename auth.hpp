@@ -1,8 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string>
+#include <conio.h>
+
 using namespace std;
 bool isAuth = false;
+string salt = "aksjfalksfdjlkasjfdjlkas1a414afs41fd";
 //Login function
 bool login(){
 string UserName,Password;
@@ -11,12 +15,7 @@ bool On_Off = true;
 bool Off = true;
 int countt = 0;
 int left = 3;
-SET_CONSOLE_COLOR(CYAN);
-    cout<<"\n\t***************************************"<<endl;
-    cout<<  "\t*                                     *"<<endl;
-    cout<<  "\t*      Salary Management System       *"<<endl;
-    cout<<  "\t*                                     *"<<endl;
-    cout<<"\n\t***************************************"<<endl;
+int ch;
 cout << "\n**** Login to your Account **** \n";
 while(On_Off){
     //********************************************
@@ -36,19 +35,19 @@ while(On_Off){
             SET_CONSOLE_COLOR(GREEN);
             getline(cin,UseEnter);
             SET_CONSOLE_COLOR(YELLOW);
-            if(UseEnter == "") cout<<"\n\t*****Please input username*****"<<endl;
-            else cout<<"\n\t*****Please input password*****"<<endl;
         } while (UseEnter == "");
         
-        do
+        SET_CONSOLE_COLOR(YELLOW);
+        cout<<"\n\tEnter Password: ";
+        ch = getch();
+        while (ch != 13)
         {
-            SET_CONSOLE_COLOR(YELLOW);
-            cout<<"\n\tEnter Password: ";
-            SET_CONSOLE_COLOR(GREEN);
-            getline(cin,PassEnter);getchar();
-            SET_CONSOLE_COLOR(YELLOW);
-            if(PassEnter == "") cout<<"\n\t*****Please input password*****"<<endl;
-        } while (PassEnter == "");
+            PassEnter.push_back(ch);
+            cout<<"x";
+            ch = getch();
+        }
+        SET_CONSOLE_COLOR(YELLOW);
+   
         
         countt++;
         string read;
@@ -56,7 +55,7 @@ while(On_Off){
         while(getline(user,read)){
             stringstream convertor(read);
             convertor >> UserName >> Password;
-            if(UseEnter == UserName && PassEnter == Password){
+            if(UseEnter == UserName && salt+PassEnter+salt == Password){
                 Off = false;}}
         //=====================================================*
             }
@@ -81,7 +80,7 @@ string newName,checkName,newPass,confirmPass;
 int MiniPass ;
 bool if_ON = true;
 bool oo = true;
-
+int ch;
 cout << "\n\t**** Create New Account **** \n";
 
 //UserName Validation
@@ -113,9 +112,21 @@ while(oo){
 //Password Validation
 while(true){
     cout << "\n\tEnter New password: ";
-    getline(cin,newPass);
+    ch = getch();
+    while (ch != 13)
+    {
+        newPass.push_back(ch);
+        cout<<"x";
+        ch = getch();
+    }
     cout << "\n\tConfirm the password: ";
-    getline(cin,confirmPass);
+    ch = getch();
+    while (ch != 13)
+    {
+        confirmPass.push_back(ch);
+        cout<<"x";
+        ch = getch();
+    }
     MiniPass = newPass.length();
 
     if (MiniPass < 5){
@@ -125,7 +136,7 @@ while(true){
         fstream users;
         users.open("Users.txt",ios::app);
         if(users.is_open()){
-            users << newName +" "+ newPass << endl;
+            users << newName +" "+salt+newPass+salt<< endl;
             users.close();
         }
         cout << "\n===================================\n";

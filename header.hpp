@@ -149,17 +149,17 @@ void saveFile(string ID, string name, string job, double salary, string gender, 
     file.close();
 }
 
-void saveReportFile(int ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
+void saveReportFile(int ID, string name, string job, double salary, string gender) {
     fstream file;
     file.open("reportData.txt", ios::app);
     if(file.is_open()) {
-        file<<"\tAdded data: \tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<"\tAttendance: "<<attendance<<"\tDay off: "<<dayOff<<"\tWork Hours: "<<workHours<<endl;
+        file<<"\tAdded data: \tID: "<<ID<<"\tName: "<<name<<"\tJob: "<<job<<"\tSalary: $"<<salary<<"\tGender: "<<gender<<endl;
     }
     file.close();
 }
 
 
-void insertToReportFileAndSave(List *ls, int ID, string name, string job, double salary, string gender, string attendance, string dayOff, double workHours) {
+void insertToReportFileAndSave(List *ls, int ID, string name, string job, double salary, string gender) {
 
     Element * e;
     e = new Element();
@@ -167,10 +167,7 @@ void insertToReportFileAndSave(List *ls, int ID, string name, string job, double
     e->ID = ID;
     e->name = name;
     e->job = job;
-    e->attendance = attendance;
     e->gender = gender;
-    e->dayOff = dayOff;
-    e->workHours = workHours;
 
 
     e->next = ls->head;
@@ -179,7 +176,7 @@ void insertToReportFileAndSave(List *ls, int ID, string name, string job, double
         ls->tail = e;
     }
     ls->size++;       
-    saveReportFile(ID, name, job, salary, gender, attendance, dayOff, workHours);
+    saveReportFile(ID, name, job, salary, gender);
 }
 
 

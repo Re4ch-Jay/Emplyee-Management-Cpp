@@ -63,6 +63,69 @@ void displayStack(Stack *s) {
         tmp = tmp->next;
     }
 }
+
+void searchAdd(Stack * s) {
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        if(tmp->operation == "You used Create Operation"){
+            cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        }
+        tmp = tmp->next;
+    }
+}
+
+void searchView(Stack * s){
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        if(tmp->operation == "You used Viewing Operation"){
+            cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        }
+        tmp = tmp->next;
+    }
+}
+
+
+void searchSearch(Stack * s){
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        if(tmp->operation == "You used Searching Operation"){
+            cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        }
+        tmp = tmp->next;
+    }
+}
+
+void searchDelete(Stack * s){
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        if(tmp->operation == "You used delete operation"){
+            cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        }
+        tmp = tmp->next;
+    }
+}
+
+void searchUpdate(Stack * s){
+    Node *tmp;
+    tmp = s->top;
+    while (tmp != NULL)
+    {
+        if(tmp->operation == "You used update operation"){
+            cout<<"Operation: "<<tmp->operation<<"\t At local date time is: "<<tmp->time<<endl;
+        }
+        tmp = tmp->next;
+    }
+}
+
+
 void readOperationFile() {
     fstream file;
     file.open(OPERATION_FILE, ios::in);
